@@ -1,1 +1,8 @@
 <h1>商品一覧ページ</h1>
+
+<% @items.each do |item|%>
+  <%=link_to "商品の詳細ページ",item_path(item) %>
+  <br>
+  <%= item.name %><br>
+  ￥<%= (item.price).to_s(:delimited) %><br>
+<%end%>
