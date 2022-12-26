@@ -13,6 +13,12 @@
   <%= f.label :price, "税抜価格" %>
   <%= f.text_field :price, placeholder: "1000"%> 円
   <br>
+  <%= f.label :is_active, "販売ステータス" %>
+  <%= f.radio_button :is_active, :true %>
+  <%= f.label :is_active, "販売中", value: :true%>
+  <%= f.radio_button :is_active, :false %>
+  <%= f.label :is_active, "販売中止", value: :falese%>
+  <br>
   <%= f.submit "商品を追加" %>
 <%end%>
 

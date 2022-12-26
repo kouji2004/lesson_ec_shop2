@@ -1,10 +1,12 @@
 <h1>商品一覧情報</h1>
 <%@items.each do |item| %>
-    <%= item.name %>
+    <%= link_to item.name, admin_item_path(item) %>
     <br>
      <%= item.introduction %>
      <br>
      <%= item.genre.name%>
      <br>
      <%= item.price %>
+     <br>
+    <%= item.is_active ? "販売中" : "販売停止中" %>
 <%end%>
