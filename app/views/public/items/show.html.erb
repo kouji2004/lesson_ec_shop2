@@ -1,1 +1,6 @@
 <h1>商品の詳細ページ</h1>
+<%= @item.name %><br>
+<%= @item.introduction %><br>
+￥<%= (@item.with_tax_price).to_s(:delimited) %><br>
+
+

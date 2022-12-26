@@ -1,6 +1,6 @@
 <h1>TOPページ</h1>
 <%@itemes.each do |item|%>
-  <%=link_to "商品の詳細へ" %>
+  <%=link_to "商品の詳細へ",items_path(item) %>
   <br>
   <%= item.name %>
   <br>
