@@ -16,7 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
   namespace :admin do
-    resources :genres, only: [:index,:edit,:create]
+    resources :genres, only: [:index,:edit,:create,:update]
   end
 
    scope module: :public do
