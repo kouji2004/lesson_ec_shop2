@@ -1,4 +1,4 @@
-<h3>ジャンル一覧</h3>
+<h3>ジャンルを追加</h3>
 
 <%= form_with model: @genre, url:admin_genres_path do |f| %>
 <%= f.label :name ,"ジャンル名" %>
@@ -7,4 +7,11 @@
 <%=f.submit "確定" %>
 <%end%>
 
+<br>
+<br>
 
+<h3>ジャンル一覧</h3>
+<% @genres.each do |genre| %>
+ <%= genre.name %>
+ <%= link_to "編集する", edit_admin_genre_path(genre) %>
+<%end%>
