@@ -1,2 +1,10 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<h1>TOPページ</h1>
+<%@itemes.each do |item|%>
+  <%=link_to "商品の詳細へ" %>
+  <br>
+  <%= item.name %>
+  <br>
+  ￥<%= (item.price).to_s(:delimited) %><br>
+<%end%>
+
+ <%= link_to "全ての商品を見る >" %>
