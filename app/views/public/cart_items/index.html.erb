@@ -1,4 +1,7 @@
 <h1>カート内の商品一覧</h1>
+
+ <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, data:{confirm: "カートの中身を全て削除してもよろしいですか？"}%>
+
 <% total = 0 %>
 <% if current_customer.cart_items.present? %>
          <% @cart_items.each do |cart_item| %>
@@ -14,3 +17,6 @@
            <% total += cart_item.subtotal.to_i %>
          <% end %>
        <% end %>
+
+       <br>
+      <%= link_to "買い物を続ける", root_path%>
