@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
   def index
+    @items = Item.all
+    @orders = current_customer.orders
   end
 
   def log
