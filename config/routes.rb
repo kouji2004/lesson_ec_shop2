@@ -20,6 +20,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
    scope module: :public do
     resources :items, only: [:index, :show]
+     resources :cart_items, only: [:index, :create, :update, :destroy]
     get 'homes/about'
     root to: 'homes#top'
   end
