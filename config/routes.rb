@@ -25,7 +25,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
           delete 'all_destroy'
         end
       end
-    get 'homes/about'
+      post '/orders/log' => 'orders#log', as: 'log'
+      get '/orders/thanks' => 'orders#thanks', as: 'thanks'
+      resources :orders, only: [:index, :show, :new, :create]
+      get 'homes/about'
     root to: 'homes#top'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
