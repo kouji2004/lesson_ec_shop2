@@ -1,2 +1,66 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+ <h1>注文履歴詳細</h1>
+<h3>注文情報</h3>
+
+<p>
+  注文日:
+  <%= @order.created_at.strftime('%Y/%m/%d') %>
+</p>
+
+<p>
+  配送先:
+ 〒<%= @order.post_code %>:
+  <%= @order.address %>:
+  <%= @order.address_name %>
+</p>
+
+<p>
+  支払方法:
+  <%= @order.payment_method %>
+</p>
+
+<p>
+  ステータス:
+  <%= @order.order_status %>
+</p>
+
+<h3>請求情報:</h3>
+
+<p>
+  商品合計:
+   <% @total = 0 %>
+    <%  @order.order_details.each do |detail| %>
+      <% @total += detail.ordered_price*detail.item_count %>
+    <% end %>
+      <%= (@total*1.1).floor.to_s(:delimited) %>
+</p>
+
+
+<p>
+  配送料:
+  <%= @order.postage %>
+</p>
+
+<p>
+  ご請求額:
+  <%= @order.billing_amount.to_s(:delimited) %>
+</p>
+
+<h3>注文内容</h3>
+    <% @order.order_details.each do |order_detail| %>
+              <p>
+                商品:
+                <%= order_detail.item.name %>
+              </p>
+              <p>
+                単価（税込）
+                <%= (order_detail.ordered_price*1.1).floor.to_s(:delimited) %>
+              </p>
+              <p>
+                個数:
+                <%= order_detail.item_count %>
+              </p>
+              <p>
+                小計:
+                <%= ((order_detail.ordered_price*order_detail.item_count)*1.1).floor.to_s(:delimited) %>
+              </p>
+    <% end %>
