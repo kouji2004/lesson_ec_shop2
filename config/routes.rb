@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -20,6 +16,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     resources :genres, only: [:index,:edit,:create,:update]
     resources :items, only: [:new, :index, :show, :edit,:create,:update]
+     get '/customers/:id/order' => 'customers#order', as: 'customer_orders'
+      resources :orders, only: [:index, :show, :update]
+      resources :order_details, only: [:update]
   end
 
    scope module: :public do
